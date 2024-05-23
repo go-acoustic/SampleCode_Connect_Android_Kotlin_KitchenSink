@@ -1,0 +1,99 @@
+{
+  "AutoLayout": {
+    "GlobalScreenSettings": {
+      "ScreenChange": true,
+      "DisplayName": "",
+      "CaptureLayoutDelay": 500,
+      "ScreenShot": true,
+      "NumberOfWebViews": 0,
+      "CaptureUserEvents": true,
+      "CaptureScreenVisits": true,
+      "CaptureLayoutOn": 2,
+      "CaptureScreenshotOn": 2,
+      "Masking": {
+        "HasMasking": false,
+        "HasCustomMask": false,
+        "Sensitive": {
+          "capitalCaseAlphabet": "X",
+          "number": "9",
+          "smallCaseAlphabet": "x",
+          "symbol": "#"
+        },
+        "MaskIdList": [
+          "password"
+        ],
+        "MaskValueList": []
+      }
+    },
+    "LoginActivity": {
+      "ScreenChange": true,
+      "DisplayName": "LoginActivity",
+      "CaptureLayoutOn": 2
+    },
+    "MainActivity": {
+      "ScreenChange": true,
+      "DisplayName": "MainActivity",
+      "CaptureLayoutOn": 0,
+      "CaptureScreenshotOn": 0
+    },
+    "LandingFragment": {
+      "DisplayName": "Landing",
+      "CaptureLayoutDelay": 500
+    },
+    "BarsFragment": {
+      "DisplayName": "Bars",
+      "CaptureDelayLayout": 500
+    },
+    "ButtonsFragment": {
+      "DisplayName": "Buttons",
+      "CaptureDelayLayout": 500
+    },
+    "ContainerViewsFragment": {
+      "DisplayName": "Containers",
+      "CaptureDelayLayout": 500
+    },
+    "ContentViewsFragment": {
+      "DisplayName": "Contents",
+      "CaptureDelayLayout": 500
+    },
+    "ControlsFragment": {
+      "DisplayName": "Controls",
+      "CaptureDelayLayout": 700
+    },
+    "TextViewsFragment": {
+      "DisplayName": "TextViews",
+      "CaptureDelayLayout": 500
+    },
+    "ConnectionsFragment": {
+      "DisplayName": "Connections",
+      "CaptureLayoutDelay": 200
+    },
+    "CustomEventsFragment": {
+      "DisplayName": "Custom Events",
+      "CaptureLayoutDelay": 500
+    },
+    "ExceptionsFragment": {
+      "DisplayName": "Exceptions",
+      "CaptureLayoutDelay": 500
+    },
+    "NotLoggedFragment": {
+      "ScreenChange": false,
+      "DisplayName": "This fragment is not logged",
+      "CaptureLayoutDelay": 0,
+      "ScreenShot": false,
+      "NumberOfWebViews": 0,
+      "CaptureUserEvents": false,
+      "CaptureScreenVisits": false,
+      "CaptureLayoutOn": 0,
+      "CaptureScreenshotOn": 0
+    }
+  },
+  "AppendMapIds": {
+    "com.any.package:id/givenIdOnXmlLayout1": {
+      "mid": "giveAdditionalId1"
+    },
+    "com.any.package:id/givenIdOnXmlLayout2": {
+      "mid": "giveAdditionalId2"
+    }
+  }
+}
