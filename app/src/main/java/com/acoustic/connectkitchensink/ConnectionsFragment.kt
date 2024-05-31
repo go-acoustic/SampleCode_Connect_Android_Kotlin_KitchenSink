@@ -16,14 +16,19 @@ package com.acoustic.connectkitchensink
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import com.acoustic.connect.android.connectmod.Connect
+import com.acoustic.connect.android.connectmod.Models.Connection
 import com.acoustic.connectkitchensink.databinding.FragmentConnectionsBinding
-import com.tl.uic.Tealeaf
-import com.tl.uic.model.Connection
 import com.tl.uic.util.TLFConnectionUtil
 import com.tl.uic.util.TLFConnectionUtil.openConnection
 import okio.ByteString
@@ -32,7 +37,8 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.*
+import java.util.Date
+
 
 class ConnectionsFragment : Fragment(), MenuProvider {
 
@@ -54,22 +60,22 @@ class ConnectionsFragment : Fragment(), MenuProvider {
 
                     val imageUrl = "https://acoustic.com/"
                     val url = URL(imageUrl)
-                    val connection = Connection()
-
-                    connection.url = imageUrl
-                    connection.initTime = Date().time
-
-                    val httpClient = url.openConnection() as HttpURLConnection
-
-                    connection.statusCode = httpClient.responseCode
-                    connection.responseDataSize = httpClient.contentLength.toLong()
-                    connection.headers = httpClient.headerFields
-                    connection.cookies = Tealeaf.getTLCookie()
-
-                    Tealeaf.logConnection(connection)
+//                    val connection = Connection()
+//
+//                    connection.url = imageUrl
+//                    connection.initTime = Date().time
+//
+//                    val httpClient = url.openConnection() as HttpURLConnection
+//
+//                    connection.statusCode = httpClient.responseCode
+//                    connection.responseDataSize = httpClient.contentLength.toLong()
+//                    connection.headers = httpClient.headerFields
+//                    connection.cookies = Connect.getTLCookie()
+//
+//                    Connect.logConnection(connection)
 
                 } catch (e: Exception) {
-                    Tealeaf.logException(e)
+                    Connect.logException(e)
                 }
             }
             thread.start()
@@ -90,10 +96,10 @@ class ConnectionsFragment : Fragment(), MenuProvider {
                     connection.statusCode = httpClient.responseCode
                     connection.responseDataSize = httpClient.contentLength.toLong()
 
-                    Tealeaf.logConnection(connection)
+                    Connect.logConnection(connection)
 
                 } catch (e: java.lang.Exception) {
-                    Tealeaf.logException(e)
+                    Connect.logException(e)
                 }
             }
             thread.start()
@@ -139,7 +145,7 @@ class ConnectionsFragment : Fragment(), MenuProvider {
                     `in`.close()
 
                 } catch (e: Exception) {
-                    Tealeaf.logException(e)
+                    Connect.logException(e)
                 }
             }
             thread.start()
@@ -178,7 +184,7 @@ class ConnectionsFragment : Fragment(), MenuProvider {
                     }
 
                 } catch (e: Exception) {
-                    Tealeaf.logException(e)
+                    Connect.logException(e)
                 }
             }
             thread.start()

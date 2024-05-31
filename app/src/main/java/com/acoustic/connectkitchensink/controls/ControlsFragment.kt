@@ -22,7 +22,12 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -35,6 +40,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.FragmentControlsBinding
 import com.acoustic.connectkitchensink.landingdetail.LandingDetailClickHandler
@@ -47,14 +53,13 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import com.tl.uic.Tealeaf
 import com.tl.uic.util.DialogLogScreenTask
 import com.tl.uic.util.TaskRunner
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
-import java.util.*
-
+import java.util.Calendar
+import java.util.TimeZone
 
 class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -87,10 +92,10 @@ class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCo
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
         val meetingDatePicker: MaterialDatePicker<Long> = meetingDateBuilder.build()
         meetingDatePicker.addOnPositiveButtonClickListener {
-            Tealeaf.logCustomEvent("MeetingDatePickerOK")
+            Connect.logCustomEvent("MeetingDatePickerOK")
         }
         meetingDatePicker.addOnNegativeButtonClickListener {
-            Tealeaf.logCustomEvent("MeetingDatePickerCancel")
+            Connect.logCustomEvent("MeetingDatePickerCancel")
         }
 
         val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
@@ -152,7 +157,7 @@ class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCo
         binding.contentMenus.menuExposedAutocompleteTextview.setAdapter(mPlanetsArrayAdapter)
         binding.contentMenus.menuExposedAutocompleteTextview.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Tealeaf.logEvent(view, "PlanetSelected")
+                view?.let { Connect.logEvent(it, "PlanetSelected") }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 //nothing to do here
@@ -165,7 +170,7 @@ class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCo
                 //nothing to do here
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Tealeaf.logEvent(view, "PlanetSelected")
+                view?.let { Connect.logEvent(it, "PlanetSelected") }
             }
         }
 
@@ -251,7 +256,7 @@ class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCo
         val popup = PopupMenu(requireContext(), v)
         popup.menuInflater.inflate(menuRes, popup.menu)
         popup.setOnMenuItemClickListener {
-            Tealeaf.logEvent(v)
+            Connect.logEvent(v)
             binding.contentMenus.menuDropdownButton.text = getString(R.string.menu_dropdown_button_text) + " = " + it
             false
         }
@@ -263,7 +268,7 @@ class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCo
             activity,
             name,
             alertDialog,
-            Tealeaf.getCurrentSessionId(),
+            Connect.getCurrentSessionId(),
             false,
             true
         )
@@ -322,7 +327,7 @@ class ControlsFragment: Fragment(), MenuProvider, OnMapReadyCallback, ActivityCo
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         binding.controlsMenuItemSelected.text = "$menuItem has been selected from the menu."
         binding.controlsMenuItemSelected.visibility = View.VISIBLE
-        Tealeaf.logCustomEvent("MenuItemSelected")
+        Connect.logCustomEvent("MenuItemSelected")
         return false
     }
 

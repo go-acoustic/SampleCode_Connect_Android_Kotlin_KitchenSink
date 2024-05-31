@@ -25,9 +25,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.acoustic.connectkitchensink.R
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.databinding.ActivityMainBinding
-import com.tl.uic.Tealeaf
 import com.tl.uic.util.ActionBarDrawerToggleTealeaf
 
 class MainActivity : AppCompatActivity() {
@@ -64,12 +63,12 @@ class MainActivity : AppCompatActivity() {
             if(nd.id == nc.graph.startDestinationId) {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
                 /** start: manually capture open event in replay **/
-//                Tealeaf.logEvent(drawerLayout, "OnDrawerOpened")
+                Connect.logEvent(drawerLayout, "OnDrawerOpened")
                 /** end: manually capture open event **/
             } else {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
                 /** start: manually capture close event in replay **/
-//                Tealeaf.logEvent(drawerLayout, "OnDrawerClosed")
+                Connect.logEvent(drawerLayout, "OnDrawerClosed")
                 /** end: manually capture close event **/
             }
         }
@@ -94,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun dispatchTouchEvent(e: MotionEvent?): Boolean {
-        Tealeaf.dispatchTouchEvent(this, e)
+        Connect.dispatchTouchEvent(this, e)
         return super.dispatchTouchEvent(e)
     }
 }

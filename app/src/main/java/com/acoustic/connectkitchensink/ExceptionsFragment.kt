@@ -15,14 +15,18 @@
 package com.acoustic.connectkitchensink
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import com.acoustic.connectkitchensink.R
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.databinding.FragmentExceptionsBinding
-import com.tl.uic.Tealeaf
 
 class ExceptionsFragment : Fragment(), MenuProvider {
 
@@ -45,7 +49,7 @@ class ExceptionsFragment : Fragment(), MenuProvider {
         customButton.setOnClickListener {
             val value = data["Foo"]
             if (value != null) {
-                Tealeaf.logException(Exception("Custom Exception"))
+                Connect.logException(Exception("Custom Exception"))
             }
         }
 
@@ -56,7 +60,7 @@ class ExceptionsFragment : Fragment(), MenuProvider {
                 val denominator = 0
                 val value = numerator / denominator
             } catch (e: Exception) {
-                Tealeaf.logException(e)
+                Connect.logException(e)
             }
         }
 

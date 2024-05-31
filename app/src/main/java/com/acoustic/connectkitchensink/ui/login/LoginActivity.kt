@@ -28,6 +28,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.MainActivity
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.ActivityLoginBinding
@@ -46,11 +47,13 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var tealeaf = Tealeaf(application)
-        Tealeaf.enable(
-            EOCore.getConfigItemString(Tealeaf.TLF_APP_KEY, TealeafEOLifecycleObject.getInstance()),
-            EOCore.getConfigItemString(
-                Tealeaf.TLF_POST_MESSAGE_URL,
+        // Initialize Connect SDK
+        Connect.init(application)
+        // Enable Connect SDK
+        Connect.enable(
+            Connect.getConfigItemString(Connect.TLF_APP_KEY, TealeafEOLifecycleObject.getInstance()),
+            Connect.getConfigItemString(
+                Connect.TLF_POST_MESSAGE_URL,
                 TealeafEOLifecycleObject.getInstance()
             )
         )
@@ -142,7 +145,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun dispatchTouchEvent(e: MotionEvent?): Boolean {
-        Tealeaf.dispatchTouchEvent(this, e)
+        Connect.dispatchTouchEvent(this, e)
         return super.dispatchTouchEvent(e)
     }
 

@@ -15,7 +15,12 @@
 package com.acoustic.connectkitchensink.bars
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SearchView
@@ -23,10 +28,10 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import com.acoustic.connectkitchensink.databinding.FragmentBarsSearchBinding
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
+import com.acoustic.connectkitchensink.databinding.FragmentBarsSearchBinding
 import com.google.android.material.snackbar.Snackbar
-import com.tl.uic.Tealeaf
 
 /**
  * A simple [Fragment] subclass.
@@ -79,7 +84,7 @@ class BarsSearchFragment : Fragment(), MenuProvider {
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 /** start: manual instrumentation **/
-                Tealeaf.logFormCompletion(true)
+                Connect.logFormCompletion(true)
                 /** end: manual instrumentation **/
                 return false
             }

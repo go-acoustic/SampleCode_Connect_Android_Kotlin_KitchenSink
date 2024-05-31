@@ -56,7 +56,7 @@ class ButtonsFragment : Fragment(), MenuProvider {
                     view.setOnClickListener {
                         clickHandler?.showToast("${view.text} has been clicked")
                         /** start: manually instrument event capture when a view is clicked **/
-//                        Tealeaf.logEvent(view)
+//                        Connect.logEvent(view)
                         /** end: manually instrument event capture **/
                     }
                 }

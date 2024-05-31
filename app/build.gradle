@@ -5,12 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId 'com.acoustic.connectkitchensink'
         minSdk 21
-        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -19,7 +18,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
@@ -40,7 +39,7 @@ android {
 
 dependencies {
 
-    implementation fileTree(include: ["*.aar", "*.jar"], dir: "libs")
+    api fileTree(include: ["*.aar", "*.jar"], dir: "libs")
 
     implementation "androidx.core:core-ktx:1.10.1"
     implementation "androidx.appcompat:appcompat:1.6.1"
@@ -72,7 +71,5 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.5.1"
 
     implementation "io.github.go-acoustic:connect:+"
-    implementation "io.github.go-acoustic:eocore:+"
-    implementation "io.github.go-acoustic:tealeaf:+"
 
 }

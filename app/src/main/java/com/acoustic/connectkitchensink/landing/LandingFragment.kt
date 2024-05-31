@@ -17,7 +17,12 @@ package com.acoustic.connectkitchensink.landing
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
@@ -26,9 +31,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.FragmentLandingBinding
-import com.tl.uic.Tealeaf
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation
@@ -92,7 +97,7 @@ class LandingFragment : Fragment(), MenuProvider {
         binding.recyclerView.addItemDecoration(dividerItemDecoration)
 
         // Manually set page name so automatic logging picks up the screen change
-        Tealeaf.setCurrentLogicalPageName("LandingFragment")
+        Connect.setCurrentLogicalPageName("LandingFragment")
         return binding.root
     }
 

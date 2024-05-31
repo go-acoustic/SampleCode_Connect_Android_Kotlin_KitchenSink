@@ -15,18 +15,23 @@
 package com.acoustic.connectkitchensink.notlogged
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.FragmentButtonsBinding
 import com.acoustic.connectkitchensink.landingdetail.LandingDetailClickHandler
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.tl.uic.Tealeaf
 import com.tl.uic.model.ScreenviewType
 
 /**
@@ -74,7 +79,7 @@ class NotLoggedFragment : Fragment(), MenuProvider {
         }
 
         // Manual call will not be logged since logging is disabled for "NotLoggedFragment"
-        Tealeaf.logScreenview(activity, "NotLoggedFragment", ScreenviewType.LOAD)
+        Connect.logScreenview(activity, "NotLoggedFragment", ScreenviewType.LOAD)
 
         return binding.root
     }
@@ -82,7 +87,7 @@ class NotLoggedFragment : Fragment(), MenuProvider {
     override fun onResume() {
         super.onResume()
         // Manual call will not be logged since logging is disabled for "NotLoggedFragment"
-        Tealeaf.onResume(activity, "NotLoggedFragment")
+        Connect.onResume(activity, "NotLoggedFragment")
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

@@ -16,7 +16,13 @@ package com.acoustic.connectkitchensink.textviews
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ArrayAdapter
 import android.widget.TextSwitcher
@@ -25,11 +31,10 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.FragmentTextViewsBinding
 import com.acoustic.connectkitchensink.landingdetail.LandingDetailSocialMediaAdapter
-import com.ibm.eo.EOCore
-import com.tl.uic.Tealeaf
 import com.tl.uic.TealeafEOLifecycleObject
 
 
@@ -82,33 +87,33 @@ class TextViewsFragment: Fragment(), MenuProvider {
         val previousButton = binding.contentTextSwitchers.textSwitcherPrevious
         previousButton.setOnClickListener {
             textSwitcherAnimate(textSwitcher, 0)
-            Tealeaf.logEvent(previousButton)
+            Connect.logEvent(previousButton)
         }
 
         val nextButton = binding.contentTextSwitchers.textSwitcherNext
         nextButton.setOnClickListener {
             textSwitcherAnimate(textSwitcher, 1)
-            Tealeaf.logEvent(nextButton)
+            Connect.logEvent(nextButton)
         }
 
         val singleLineEditText = binding.contentTextEdits.textEditSingleLine
-        singleLineEditText.setText(EOCore.getConfigItemString(Tealeaf.TLF_POST_MESSAGE_URL, TealeafEOLifecycleObject.getInstance()))
+        singleLineEditText.setText(Connect.getConfigItemString(Connect.TLF_POST_MESSAGE_URL, TealeafEOLifecycleObject.getInstance()))
         binding.contentTextEdits.textEditSingleLineSubmit.setOnClickListener {
 
             var configModified = false
 
-            if (singleLineEditText.text.toString() != EOCore.getConfigItemString(Tealeaf.TLF_POST_MESSAGE_URL, TealeafEOLifecycleObject.getInstance())) {
-                EOCore.updateConfig(Tealeaf.TLF_POST_MESSAGE_URL, singleLineEditText.text.toString(), TealeafEOLifecycleObject.getInstance())
+            if (singleLineEditText.text.toString() != Connect.getConfigItemString(Connect.TLF_POST_MESSAGE_URL, TealeafEOLifecycleObject.getInstance())) {
+                Connect.updateConfig(Connect.TLF_POST_MESSAGE_URL, singleLineEditText.text.toString(), TealeafEOLifecycleObject.getInstance())
                 configModified = true
             }
 
             if (configModified) {
-                Tealeaf.disable()
-                Tealeaf.enable()
+                Connect.disable()
+                Connect.enable()
             }
 
             /** start: manual instrumentation **/
-            Tealeaf.logFormCompletion(true)
+            Connect.logFormCompletion(true)
             /** end: manual instrumentation **/
 
         }

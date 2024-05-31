@@ -20,6 +20,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.bars.BarsFragment
 import com.acoustic.connectkitchensink.buttons.ButtonsFragment
@@ -29,9 +30,9 @@ import com.acoustic.connectkitchensink.controls.ControlsFragment
 import com.acoustic.connectkitchensink.databinding.FragmentLandingDetailBinding
 import com.acoustic.connectkitchensink.notlogged.NotLoggedFragment
 import com.acoustic.connectkitchensink.textviews.TextViewsFragment
-import com.ibm.eo.EOCore
-import com.tl.uic.Tealeaf
-import com.tl.uic.TealeafEOLifecycleObject
+//import com.ibm.eo.EOCore
+//import com.tl.uic.Tealeaf
+//import com.tl.uic.TealeafEOLifecycleObject
 
 class LandingDetailFragment : Fragment() {
 
@@ -80,11 +81,11 @@ class LandingDetailFragment : Fragment() {
             }
             args.itemTitle.lowercase() == "fragment not logged" -> {
                 // Disable automatic fragment logging
-                EOCore.updateConfig(
-                    Tealeaf.TLF_Enable_Fragment_Life_Cycle_Listener,
-                    "false",
-                    TealeafEOLifecycleObject.getInstance()
-                )
+//                Connect.updateConfig(
+//                    Connect.TLF_Enable_Fragment_Life_Cycle_Listener,
+//                    "false",
+//                    TealeafEOLifecycleObject.getInstance()
+//                )
                 setCurrentFragment(notLoggedFragment, "This Fragment Is Not Logged")
             }
         }
@@ -99,12 +100,12 @@ class LandingDetailFragment : Fragment() {
     override fun onPause() {
         super.onPause()
 
-        // Enable automatic fragment logging
-        EOCore.updateConfig(
-            Tealeaf.TLF_Enable_Fragment_Life_Cycle_Listener,
-            "true",
-            TealeafEOLifecycleObject.getInstance()
-        )
+        // TODO:  Enable automatic fragment logging
+//        Connect.updateConfig(
+//            Connect.TLF_Enable_Fragment_Life_Cycle_Listener,
+//            "true",
+//            TealeafEOLifecycleObject.getInstance()
+//        )
     }
 
     override fun onDestroyView() {

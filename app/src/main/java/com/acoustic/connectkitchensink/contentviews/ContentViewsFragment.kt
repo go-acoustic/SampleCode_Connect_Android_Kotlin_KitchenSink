@@ -19,7 +19,13 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.ScaleGestureDetector
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.MenuHost
@@ -27,6 +33,7 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.FragmentContentViewsBinding
 import com.acoustic.connectkitchensink.landingdetail.LandingDetailClickHandler
@@ -35,7 +42,6 @@ import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.tl.uic.Tealeaf
 import com.tl.uic.util.DialogUtil
 
 
@@ -162,21 +168,21 @@ class ContentViewsFragment : Fragment(), MenuProvider {
                 .setMessage(resources.getString(R.string.dialog_alert_supporting_text))
                 .setNeutralButton(resources.getString(R.string.dialog_button_cancel)) { dialog, which ->
                     // Respond to neutral button press
-                    Tealeaf.logDialogEvent(dialog, which)
+                    Connect.logDialogEvent(dialog, which)
                     clickHandler?.showToast(resources.getString(R.string.dialog_button_cancel) + " has been clicked")
                 }
                 .setNegativeButton(resources.getString(R.string.dialog_button_decline)) { dialog, which ->
                     // Respond to negative button press
-                    Tealeaf.logDialogEvent(dialog, which)
+                    Connect.logDialogEvent(dialog, which)
                     clickHandler?.showToast(resources.getString(R.string.dialog_button_decline) + " has been clicked")
                 }
                 .setPositiveButton(resources.getString(R.string.dialog_button_accept)) { dialog, which ->
                     // Respond to positive button press
-                    Tealeaf.logDialogEvent(dialog, which)
+                    Connect.logDialogEvent(dialog, which)
                     clickHandler?.showToast(resources.getString(R.string.dialog_button_accept) + " has been clicked")
                 }
             val dialog = builder.create()
-            Tealeaf.logScreenLayoutSetOnShowListener(requireActivity(), dialog)
+            Connect.logScreenLayoutSetOnShowListener(requireActivity(), dialog)
             dialog.show()
 
         }

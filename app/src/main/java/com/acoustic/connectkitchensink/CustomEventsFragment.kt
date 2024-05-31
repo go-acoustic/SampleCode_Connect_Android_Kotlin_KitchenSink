@@ -20,8 +20,8 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.databinding.FragmentCustomEventsBinding
-import com.tl.uic.Tealeaf
 
 class CustomEventsFragment : Fragment(), MenuProvider {
 
@@ -37,12 +37,12 @@ class CustomEventsFragment : Fragment(), MenuProvider {
         val menuHost: MenuHost = host as MenuHost
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
-        val data = HashMap<String, String>()
+        val data = HashMap<String?, String?>()
         data["Foo"] = "Bar"
 
         val eventButton = binding.contentCustomEvents.customEventsEventButton
         eventButton.setOnClickListener {
-            Tealeaf.logCustomEvent("MyEvent", data)
+            Connect.logCustomEvent("MyEvent", data)
         }
 
         return binding.root
