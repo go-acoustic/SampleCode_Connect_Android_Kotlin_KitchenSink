@@ -11,18 +11,18 @@
       "CaptureLayoutOn": 2,
       "CaptureScreenshotOn": 2,
       "Masking": {
-        "HasMasking": false,
-        "HasCustomMask": false,
+        "HasMasking": true,
+        "HasCustomMask": true,
         "Sensitive": {
           "capitalCaseAlphabet": "X",
           "number": "9",
           "smallCaseAlphabet": "x",
           "symbol": "#"
         },
-        "MaskIdList": [
-          "password"
-        ],
-        "MaskValueList": []
+        "MaskIdList": [],
+        "MaskAccessibilityLabelList": [
+          "privacyTest"
+        ]
       }
     },
     "LoginActivity": {

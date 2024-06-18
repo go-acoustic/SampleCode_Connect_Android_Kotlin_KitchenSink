@@ -17,6 +17,7 @@ package com.acoustic.connectkitchensink.landing
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -79,10 +80,15 @@ class LandingFragment : Fragment(), MenuProvider {
         landingViewModel.navigateToLandingDetail.observe(viewLifecycleOwner) { item ->
             item?.let {
                 Handler(Looper.getMainLooper()).postDelayed({
-                    this.findNavController().navigate(
-                        LandingFragmentDirections.actionLandingFragmentToLandingDetailFragment(item)
-                    )
-                    landingViewModel.onLandingDetailNavigated()
+                    // Check if the current destination is the LandingFragment
+                    if (this.findNavController().currentDestination?.id == R.id.LandingFragment) {
+                        this.findNavController().navigate(
+                            LandingFragmentDirections.actionLandingFragmentToLandingDetailFragment(item)
+                        )
+                        landingViewModel.onLandingDetailNavigated()
+                    } else {
+                        Log.d("LandingFragment", "Navigating when an item is clicked, but we are not on LandingFragment")
+                    }
                 }, 500)
             }
         }
