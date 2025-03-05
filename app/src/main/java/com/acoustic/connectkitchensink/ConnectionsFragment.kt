@@ -27,8 +27,8 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.acoustic.connect.android.connectmod.Connect
-import com.acoustic.connect.android.connectmod.Models.Connection
 import com.acoustic.connectkitchensink.databinding.FragmentConnectionsBinding
+import com.tl.uic.model.Connection
 import com.tl.uic.util.TLFConnectionUtil
 import com.tl.uic.util.TLFConnectionUtil.openConnection
 import okio.ByteString
