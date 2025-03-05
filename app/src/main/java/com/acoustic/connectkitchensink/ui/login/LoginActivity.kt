@@ -32,9 +32,6 @@ import com.acoustic.connect.android.connectmod.Connect
 import com.acoustic.connectkitchensink.MainActivity
 import com.acoustic.connectkitchensink.R
 import com.acoustic.connectkitchensink.databinding.ActivityLoginBinding
-import com.ibm.eo.EOCore
-import com.tl.uic.Tealeaf
-import com.tl.uic.TealeafEOLifecycleObject
 
 class LoginActivity : AppCompatActivity() {
 
@@ -50,13 +47,7 @@ class LoginActivity : AppCompatActivity() {
         // Initialize Connect SDK
         Connect.init(application)
         // Enable Connect SDK
-        Connect.enable(
-            Connect.getConfigItemString(Connect.TLF_APP_KEY, TealeafEOLifecycleObject.getInstance()),
-            Connect.getConfigItemString(
-                Connect.TLF_POST_MESSAGE_URL,
-                TealeafEOLifecycleObject.getInstance()
-            )
-        )
+        Connect.enable("fa47722a7fef4bcd8677fd8d6d113a0d", "https://lib-us-2.brilliantcollector.com/collector/collectorPost")
 
         val username = binding.username
         val password = binding.password
