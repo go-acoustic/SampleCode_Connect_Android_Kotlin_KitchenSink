@@ -14,7 +14,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url "https://jitpack.io" }
 
-        maven { url "https://s01.oss.sonatype.org/content/groups/${connectRepo}" }
+//        maven { url "https://s01.oss.sonatype.org/content/groups/${connectRepo}" }
     }
 }
 rootProject.name = "ConnectKitchenSink"
